@@ -2,21 +2,26 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class FileService {
-  UploadIDfront(file: any) {
+  UploadIDfront(file: Express.Multer.File) {
     const response = {
       originalname: file.originalname,
       filename: file.filename,
     };
-    console.log(file);
+    console.log('file', file);
     return response;
   }
 
-  UploadIDback(file: any) {
+  UploadIDback(file: Express.Multer.File) {
     const response = {
       originalname: file.originalname,
-      filename: file.filename,
+      filename: (req, file, callback) => {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
+        const ext = extname(file.originalname);
+        const filename = `{file.originalname}-{uniqueSuffix}{ext}`;
+        callback(null, filename);
+      },
     };
-    console.log(file);
+    console.log('file', file);
     return response;
   }
 
@@ -25,12 +30,15 @@ export class FileService {
     return newIdNumber;
   }
 
-  UploadAddressProof(file: any) {
+  UploadAddressProof(file: Express.Multer.File) {
     const response = {
       originalname: file.originalname,
       filename: file.filename,
     };
-    console.log(file);
+    console.log('file', file);
     return response;
   }
+}
+function extname(originalname: any) {
+  throw new Error('Function not implemented.');
 }

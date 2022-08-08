@@ -28,7 +28,7 @@ import { Profile } from './profile/entity/profile.entity';
       entities: [User, Profile],
       synchronize: true,
     }),
-    MulterModule.register({ dest: './files' }),
+    MulterModule.register({ dest: './uploads' }),
     UserModule,
     ProfileModule,
     FileModule,
