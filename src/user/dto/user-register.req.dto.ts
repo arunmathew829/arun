@@ -20,7 +20,7 @@ export class UserRegisterRequestDto {
   @IsNotEmpty()
   @Length(8, 24)
   @Matches(REGEX.PASSWORD_RULE)
-  confirmPass: string;
+  confirm: string;
 
   @IsOptional()
   referal: any;

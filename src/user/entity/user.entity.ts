@@ -19,7 +19,7 @@ export class User {
   public pass: string;
 
   @Column({ length: 50 })
-  public confirmPass: string;
+  public confirm: string;
 
   @Column({ length: 50 })
   public referal: number;

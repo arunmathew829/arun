@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { Profile } from '../entity/profile.entity';
-import { ProfileDto } from '../dto/profile.dto';
+import { Profile } from './entity/profile.entity';
+import { ProfileDto } from './dto/profile.dto';
 @Injectable()
 export class ProfileService {
   private readonly;
-  async createProfile(
-    {
+  async createProfile(profileDto: ProfileDto) {
+    const {
       Amount,
       First_Name,
       Second_Name,
@@ -25,50 +25,7 @@ export class ProfileService {
       Colonia,
       Municipality,
       Status,
-    }: {
-      Amount: number;
-      First_Name: string;
-      Second_Name: string;
-      Name: string;
-      Gender: string;
-      DOB: Date;
-      Country_of_birth: string;
-      Nationality: string;
-      CURP: number;
-      RFC: number;
-      Phone: number;
-      Occupation: string;
-      Street: string;
-      No_Outside: string;
-      No_Inside: string;
-      PostalCode: number;
-      Colonia: string;
-      Municipality: string;
-      Status: string;
-    },
-    profileDto: ProfileDto,
-  ) {
-    const newProfile = ({
-      Amount,
-      First_Name,
-      Second_Name,
-      Name,
-      Gender,
-      DOB,
-      Country_of_birth,
-      Nationality,
-      CURP,
-      RFC,
-      Phone,
-      Occupation,
-      Street,
-      No_Outside,
-      No_Inside,
-      PostalCode,
-      Colonia,
-      Municipality,
-      Status,
-    } = profileDto);
+    } = profileDto;
 
     const profile = new Profile();
     profile.Amount = Amount;

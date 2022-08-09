@@ -5,10 +5,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { UserModule } from './user/user.module';
 import { ProfileModule } from './profile/profile.module';
-import { ProfileController } from './profile/controller/profile.controller';
-import { UserController } from './user/controller/user.controller';
-import { UserService } from './user/services/user.service';
-import { ProfileService } from './profile/services/profile.service';
 import { FileModule } from './files/file.module';
 import { MulterModule } from '@nestjs/platform-express';
 import { User } from './user/entity/user.entity';
@@ -28,13 +24,13 @@ import { Profile } from './profile/entity/profile.entity';
       entities: [User, Profile],
       synchronize: true,
     }),
+    TypeOrmModule.forFeature([User, Profile]),
     MulterModule.register({ dest: './uploads' }),
     UserModule,
     ProfileModule,
     FileModule,
-    TypeOrmModule.forFeature([User, Profile]),
   ],
-  controllers: [AppController, UserController, ProfileController],
-  providers: [AppService, UserService, ProfileService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

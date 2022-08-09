@@ -15,13 +15,12 @@ export class UserController {
   constructor(private userService: UserService) {}
 
   @Post()
-  @UsePipes(new ValidationPipe())
+  @UsePipes(ValidationPipe)
   async createUser(
     @Body()
-    body: { email: string; pass: string; confirmPass: string; referal: any },
-    UserRegister: UserRegisterRequestDto,
+    Registerdto: UserRegisterRequestDto,
   ) {
-    return this.userService.createUser(body, UserRegister);
+    return this.userService.createUser(Registerdto);
   }
 }
 // : Promise<User>

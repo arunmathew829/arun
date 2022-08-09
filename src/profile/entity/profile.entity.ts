@@ -1,4 +1,3 @@
-import { IsNotEmpty } from 'class-validator';
 import {
   Entity,
   Column,
@@ -30,7 +29,6 @@ export class Profile {
   @CreateDateColumn()
   DOB: Date;
 
-  @IsNotEmpty()
   @Column({ length: 50 })
   Country_of_birth: string;
 
